@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 from django.conf import settings
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -182,3 +183,12 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 AUTH_USER_MODEL='authapp.MyUser'
+
+PASSWORD_RESET_TIMEOUT=900
+
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST="smtp.gmail.com"
+EMAIL_PORT=587
+EMAIL_HOST_USER=os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_PASS')
+EMAIL_USE_TLS=True
